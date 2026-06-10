@@ -2,13 +2,9 @@
 
 Open-source tools for AI coding agents.
 
-The public focus of this org is now **Shale**: agent PR evidence that captures
-what an AI coding agent was asked to do, what it touched, and what checks ran,
-then renders that evidence on the pull request.
-
-The hosted/enterprise Provasign product is paused and intentionally hidden for
-now. We are keeping the org name because the repositories, packages, releases,
-and Homebrew taps already live here.
+Our primary project is **Shale**: agent PR evidence that captures what an AI
+coding agent was asked to do, what it touched, and what checks ran, then renders
+that evidence on the pull request.
 
 ## Active Projects
 
@@ -51,6 +47,3 @@ of manually chasing `rg` results.
 
 Use **Grove** when you want the graph directly for another project or custom
 automation.
-
-Provasign as a certification product may return later, but it is not the
-current public product path.
