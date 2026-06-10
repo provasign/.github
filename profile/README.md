@@ -1,49 +1,50 @@
-# Provasign
+<p align="center">
+  <img src="https://raw.githubusercontent.com/provasign/shale/main/assets/brand/shale-icon.svg" alt="" width="72">
+</p>
 
-Open-source tools for AI coding agents.
+<h1 align="center">Open-source tools for AI coding agents</h1>
+
+<p align="center"><em>Every agent PR should explain itself.</em></p>
 
 Our primary project is **Shale**: agent PR evidence that captures what an AI
-coding agent was asked to do, what it touched, and what checks ran, then renders
-that evidence on the pull request.
+coding agent was asked to do, what it touched, and what checks ran — then
+renders that evidence as a card on the pull request.
 
-## Active Projects
+<p align="center">
+  <img src="https://raw.githubusercontent.com/provasign/shale/main/assets/brand/shale-demo.svg" alt="A Shale session: shale intent, agent edits, shale done, git push, card rendered" width="720">
+</p>
+
+## Projects
 
 | Repo | Role | License |
 |---|---|---|
-| **[shale](https://github.com/provasign/shale)** | Primary product: agent PR evidence, intent capture, session evidence, and PR cards | Apache-2.0 |
-| **[prism](https://github.com/provasign/prism)** | Secondary product: graph-ranked context delivery for AI coding agents | MIT |
-| **[grove](https://github.com/provasign/grove)** | Code graph engine for direct graph/index use and embedded tools | MIT |
+| **[shale](https://github.com/provasign/shale)** | Agent PR evidence: intent capture, session evidence, and PR cards — the primary project | Apache-2.0 |
+| **[prism](https://github.com/provasign/prism)** | Graph-ranked context delivery for AI coding agents (CLI + MCP) | MIT |
+| **[grove](https://github.com/provasign/grove)** | Persistent code-graph engine: Tree-sitter parsing, SQLite, impact and test queries | MIT |
+| **[fuse](https://github.com/provasign/fuse)** | Symbol-aware Git merge driver built on Grove | MIT |
 
-## Install Shale
+## Try Shale in five minutes
 
 ```sh
-brew tap provasign/shale
-brew install shale
+brew install provasign/shale/shale
 cd your-repo
 shale init
+git add . && git commit -m "chore: enable shale" && git push
 ```
 
-If Homebrew asks you to trust the tap:
+No account, no server, no GitHub App, no token paste. The next agent-authored
+PR carries a card — see the
+**[live demo pull requests](https://github.com/provasign/shale-test-bed/pulls?q=is%3Apr)**
+for real examples, or start with the
+**[getting-started guide](https://github.com/provasign/shale/blob/main/docs/getting-started.md)**.
 
-```sh
-brew trust --formula provasign/shale/shale
-brew install shale
-```
+## Which tool do I want?
 
-## What Shale Adds
+- **Shale** — you want every agent-authored PR to explain itself to reviewers.
+- **Prism** — you want agents to retrieve graph-ranked code context instead of
+  chasing `rg` results across a dozen file reads.
+- **Grove** — you want the code graph itself: indexing, symbols, blast radius,
+  test coverage queries, embeddable Go API.
 
-- Agent intent recorded before the diff becomes review burden.
-- Session evidence and local check history committed with the code.
-- Pull-request cards that show what was seen, what was not seen, and what needs
-  reviewer attention.
-- No account, no hosted service, no GitHub App, and no token paste.
-
-## Project Positioning
-
-Use **Shale** when you want every agent-authored PR to explain itself.
-
-Use **Prism** when you want agents to retrieve graph-ranked code context instead
-of manually chasing `rg` results.
-
-Use **Grove** when you want the graph directly for another project or custom
-automation.
+Everything is local-first and fail-open by design. Docs live at
+**[provasign.dev](https://provasign.dev)**.
