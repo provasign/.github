@@ -1,50 +1,27 @@
-<p align="center">
-  <img src="https://raw.githubusercontent.com/provasign/shale/main/assets/brand/shale-icon.svg" alt="" width="72">
-</p>
+<h1 align="center">Questions your coding agent can't answer alone</h1>
 
-<h1 align="center">Open-source tools for AI coding agents</h1>
+<p align="center"><em>Stele before the plan · Prism before the edit · Shale after it</em></p>
 
-<p align="center"><em>Every agent PR should explain itself.</em></p>
+Your coding agent hands you a diff. It does not say whether the change breaks
+something you decided, whether it reached every place it had to, or what the
+agent did and checked. Three local, open-source tools answer one question each.
 
-Our primary project is **Shale**: agent PR evidence that captures what an AI
-coding agent was asked to do, what it touched, and what checks ran — then
-renders that evidence as a card on the pull request.
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/provasign/shale/main/assets/brand/shale-demo.svg" alt="A Shale session: shale intent, agent edits, shale done, git push, card rendered" width="720">
-</p>
-
-## Projects
-
-| Repo | Role | License |
+| Tool | The question | What it does |
 |---|---|---|
-| **[shale](https://github.com/provasign/shale)** | Agent PR evidence: intent capture, session evidence, and PR cards — the primary project | Apache-2.0 |
-| **[prism](https://github.com/provasign/prism)** | Graph-ranked context delivery for AI coding agents (CLI + MCP) | MIT |
-| **[grove](https://github.com/provasign/grove)** | Persistent code-graph engine: Tree-sitter parsing, SQLite, impact and test queries | MIT |
-| **[fuse](https://github.com/provasign/fuse)** | Symbol-aware Git merge driver built on Grove | MIT |
+| **[Stele](https://github.com/provasign/stele)** (preview) | Does this break what we decided? | Checks every requirement against every one approved before it, and hands the agent the approved requirements a request touches. A request that cannot keep one makes the agent stop and ask you. |
+| **[Prism](https://github.com/provasign/prism)** | Did it change everything it had to? | Every caller, override, implementation and test a change affects, resolved by the language's own compiler, not grep. Prism answers; the agent edits. |
+| **[Shale](https://github.com/provasign/shale)** | What did the agent actually do? | Records the agent session (intent, files touched, checks run) and renders it as a card reviewers read before the diff. Gaps are shown, never hidden. |
 
-## Try Shale in five minutes
+Each tool stands alone. [Grove](https://github.com/provasign/grove), the code
+graph under Prism, is open source too.
+
+## Install
 
 ```sh
-brew install provasign/shale/shale
-cd your-repo
-shale init
-git add . && git commit -m "chore: enable shale" && git push
+brew install provasign/tap/stele   # then: cd your-repo && stele init
+brew install provasign/tap/prism   # then: cd your-repo && prism init
+brew install provasign/tap/shale   # then: cd your-repo && shale init
 ```
 
-No account, no server, no GitHub App, no token paste. The next agent-authored
-PR carries a card — see the
-**[live demo pull requests](https://github.com/provasign/shale-test-bed/pulls?q=is%3Apr)**
-for real examples, or start with the
-**[getting-started guide](https://github.com/provasign/shale/blob/main/docs/getting-started.md)**.
-
-## Which tool do I want?
-
-- **Shale** — you want every agent-authored PR to explain itself to reviewers.
-- **Prism** — you want agents to retrieve graph-ranked code context instead of
-  chasing `rg` results across a dozen file reads.
-- **Grove** — you want the code graph itself: indexing, symbols, blast radius,
-  test coverage queries, embeddable Go API.
-
-Everything is local-first and fail-open by design. Docs live at
-**[provasign.dev](https://provasign.dev)**.
+Everything runs on your machine: no account, no server. Docs, benchmarks and
+demos are at **[provasign.dev](https://provasign.dev)**.
